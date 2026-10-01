@@ -28,3 +28,4 @@
 /home/amtics/114/dotnet/HospitalAppointmentSystem/obj/Debug/net8.0/HospitalAppointmentSystem.pdb
 /home/amtics/114/dotnet/HospitalAppointmentSystem/obj/Debug/net8.0/HospitalAppointmentSystem.genruntimeconfig.cache
 /home/amtics/114/dotnet/HospitalAppointmentSystem/obj/Debug/net8.0/ref/HospitalAppointmentSystem.dll
+/home/amtics/114/dotnet/HospitalAppointmentSystem/obj/Debug/net8.0/HospitalAppointmentSystem.sourcelink.json
