@@ -1,0 +1,42 @@
+@model List<HospitalAppointmentSystem.Models.Post>
+
+@{
+    ViewData["Title"] = "Posts";
+}
+
+<h1>Posts</h1>
+
+<p>
+    Posts retrieved asynchronously from
+    JSONPlaceholder API.
+</p>
+
+<table class="table table-bordered table-striped">
+
+    <thead>
+        <tr>
+            <th>Post ID</th>
+            <th>Title</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var post in Model)
+        {
+            <tr>
+                <td>@post.id</td>
+
+                <td>@post.title</td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+
+<a asp-controller="Doctor"
+   asp-action="Index"
+   class="btn btn-primary">
+    Back to Doctors
+</a>

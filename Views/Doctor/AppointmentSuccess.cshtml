@@ -1,0 +1,33 @@
+@{
+    ViewData["Title"] = "Appointment Submitted";
+}
+
+<div class="alert alert-success">
+
+    <h2>Appointment Request Submitted</h2>
+
+    <p>
+        Thank you, <strong>@ViewBag.PatientName</strong>.
+    </p>
+
+    <p>
+        Your appointment request has been received.
+    </p>
+
+    <p>
+        <strong>Doctor ID:</strong>
+        @ViewBag.DoctorId
+    </p>
+
+    <p>
+        <strong>Specialization:</strong>
+        @ViewBag.Specialization
+    </p>
+
+</div>
+
+<a asp-controller="Doctor"
+   asp-action="Index"
+   class="btn btn-primary">
+    Back to Doctors
+</a>

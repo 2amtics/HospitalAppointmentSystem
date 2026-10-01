@@ -1,0 +1,63 @@
+@model List<HospitalAppointmentSystem.Models.Doctor>
+
+@{
+    ViewData["Title"] = "Doctors";
+}
+
+<h1>Doctors</h1>
+
+<p>
+    <a asp-controller="Home"
+       asp-action="Posts"
+       class="btn btn-primary">
+        View Posts
+    </a>
+</p>
+
+<table class="table table-bordered table-striped">
+
+    <thead>
+        <tr>
+            <th>Doctor ID</th>
+            <th>Doctor Name</th>
+            <th>Specialization</th>
+            <th>Experience</th>
+            <th>Consultation Fee</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var doctor in Model)
+        {
+            <tr>
+                <td>@doctor.DoctorId</td>
+
+                <td>@doctor.DoctorName</td>
+
+                <td>@doctor.Specialization</td>
+
+                <td>@doctor.Experience years</td>
+
+                <td>₹@doctor.ConsultationFee</td>
+
+                <td>
+                    <a href="/Doctor/Details?DoctorId=@doctor.DoctorId"
+                       class="btn btn-info">
+                        Details
+                    </a>
+
+                    <a asp-controller="Doctor"
+                       asp-action="Appointment"
+                       asp-route-DoctorId="@doctor.DoctorId"
+                       class="btn btn-success">
+                        Appointment
+                    </a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>
