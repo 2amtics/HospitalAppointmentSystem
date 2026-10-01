@@ -1,33 +1,55 @@
+@* Specify that this view receives a list of Post objects. *@
 @model List<HospitalAppointmentSystem.Models.Post>
 
+@* Set the title of the page. *@
 @{
     ViewData["Title"] = "Posts";
 }
 
+@* Display the page heading. *@
 <h1>Posts</h1>
 
+@* Explain that the data was retrieved asynchronously from an API. *@
 <p>
     Posts retrieved asynchronously from
     JSONPlaceholder API.
 </p>
 
+@* Create a Bootstrap table for displaying posts. *@
 <table class="table table-bordered table-striped">
 
+    @* Define the table header. *@
     <thead>
         <tr>
+
+            @* Display the Post ID heading. *@
             <th>Post ID</th>
+
+            @* Display the Post Title heading. *@
             <th>Title</th>
+
         </tr>
     </thead>
 
+    @* Define the table body. *@
     <tbody>
 
+        @* Loop through every post received from the API. *@
         @foreach (var post in Model)
         {
+            @* Create one table row for each post. *@
             <tr>
-                <td>@post.id</td>
 
-                <td>@post.title</td>
+                @* Display the post ID. *@
+                <td>
+                    @post.id
+                </td>
+
+                @* Display the post title. *@
+                <td>
+                    @post.title
+                </td>
+
             </tr>
         }
 
@@ -35,6 +57,7 @@
 
 </table>
 
+@* Create a button to return to the doctor list. *@
 <a asp-controller="Doctor"
    asp-action="Index"
    class="btn btn-primary">

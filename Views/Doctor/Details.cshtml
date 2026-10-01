@@ -1,51 +1,68 @@
+@* Specify that this view receives one Doctor object. *@
 @model HospitalAppointmentSystem.Models.Doctor
 
+@* Set the page title. *@
 @{
     ViewData["Title"] = "Doctor Details";
 }
 
+@* Display the page heading. *@
 <h1>Doctor Details</h1>
 
+@* Create a Bootstrap card to display doctor information. *@
 <div class="card">
 
+    @* Place the doctor information inside the card body. *@
     <div class="card-body">
 
-        <h3>@Model.DoctorName</h3>
+        @* Display the doctor's name. *@
+        <h3>
+            @Model.DoctorName
+        </h3>
 
+        @* Display the doctor's ID. *@
         <p>
             <strong>Doctor ID:</strong>
             @Model.DoctorId
         </p>
 
+        @* Display the doctor's specialization. *@
         <p>
             <strong>Specialization:</strong>
             @Model.Specialization
         </p>
 
+        @* Display the doctor's experience. *@
         <p>
             <strong>Experience:</strong>
             @Model.Experience years
         </p>
 
+        @* Display the original consultation fee. *@
         <p>
             <strong>Consultation Fee:</strong>
             ₹@Model.ConsultationFee
         </p>
 
+        @* Display the fixed service charge. *@
         <p>
             <strong>Service Charge:</strong>
             ₹100
         </p>
 
+        @* Add a horizontal line before the total. *@
         <hr />
 
+        @* Display the calculated total consultation charge. *@
         <h4>
             Total Consultation Charges:
             ₹@ViewBag.TotalCharge
         </h4>
 
+        @* Add spacing before the buttons. *@
         <br />
 
+        @* Create a button to open the appointment form for this doctor. *@
         <a asp-controller="Doctor"
            asp-action="Appointment"
            asp-route-DoctorId="@Model.DoctorId"
@@ -53,6 +70,7 @@
             Book Appointment
         </a>
 
+        @* Create a button to return to the doctor list. *@
         <a asp-controller="Doctor"
            asp-action="Index"
            class="btn btn-secondary">

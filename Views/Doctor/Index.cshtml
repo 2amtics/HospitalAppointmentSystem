@@ -1,11 +1,18 @@
+@* Import the extension methods namespace so GetTotalCharge can be used if required. *@
+@using HospitalAppointmentSystem.Extensions
+
+@* Specify that this view receives a list of Doctor objects. *@
 @model List<HospitalAppointmentSystem.Models.Doctor>
 
+@* Set the title of the current page. *@
 @{
     ViewData["Title"] = "Doctors";
 }
 
+@* Display the main page heading. *@
 <h1>Doctors</h1>
 
+@* Create a link to the asynchronous posts page. *@
 <p>
     <a asp-controller="Home"
        asp-action="Posts"
@@ -14,47 +21,85 @@
     </a>
 </p>
 
+@* Create a Bootstrap table to display doctors. *@
 <table class="table table-bordered table-striped">
 
+    @* Define the table header. *@
     <thead>
         <tr>
+            @* Display Doctor ID heading. *@
             <th>Doctor ID</th>
+
+            @* Display Doctor Name heading. *@
             <th>Doctor Name</th>
+
+            @* Display Specialization heading. *@
             <th>Specialization</th>
+
+            @* Display Experience heading. *@
             <th>Experience</th>
+
+            @* Display Consultation Fee heading. *@
             <th>Consultation Fee</th>
+
+            @* Display Action heading. *@
             <th>Action</th>
         </tr>
     </thead>
 
+    @* Define the table body. *@
     <tbody>
 
+        @* Loop through every doctor in the model. *@
         @foreach (var doctor in Model)
         {
+            @* Create one table row for each doctor. *@
             <tr>
-                <td>@doctor.DoctorId</td>
 
-                <td>@doctor.DoctorName</td>
-
-                <td>@doctor.Specialization</td>
-
-                <td>@doctor.Experience years</td>
-
-                <td>₹@doctor.ConsultationFee</td>
-
+                @* Display the doctor's ID. *@
                 <td>
+                    @doctor.DoctorId
+                </td>
+
+                @* Display the doctor's name. *@
+                <td>
+                    @doctor.DoctorName
+                </td>
+
+                @* Display the doctor's specialization. *@
+                <td>
+                    @doctor.Specialization
+                </td>
+
+                @* Display the doctor's experience in years. *@
+                <td>
+                    @doctor.Experience years
+                </td>
+
+                @* Display the consultation fee. *@
+                <td>
+                    ₹@doctor.ConsultationFee
+                </td>
+
+                @* Display action buttons. *@
+                <td>
+
+                    @* Pass DoctorId through the query string to the Details action. *@
                     <a href="/Doctor/Details?DoctorId=@doctor.DoctorId"
                        class="btn btn-info">
                         Details
                     </a>
 
+                    @* Pass DoctorId to the Appointment action using a route value. *@
                     <a asp-controller="Doctor"
                        asp-action="Appointment"
                        asp-route-DoctorId="@doctor.DoctorId"
                        class="btn btn-success">
                         Appointment
                     </a>
+
                 </td>
+
             </tr>
         }
 

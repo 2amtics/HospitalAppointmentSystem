@@ -1,32 +1,43 @@
+@* Specify that this view uses the Appointment model. *@
 @model HospitalAppointmentSystem.Models.Appointment
 
+@* Set the page title and retrieve the selected doctor. *@
 @{
     ViewData["Title"] = "Book Appointment";
 
+    // Retrieve the selected Doctor object from ViewBag.
     var doctor = ViewBag.Doctor
         as HospitalAppointmentSystem.Models.Doctor;
 }
 
+@* Display the page heading. *@
 <h1>Book Appointment</h1>
 
+@* Check whether a doctor was successfully found. *@
 @if (doctor != null)
 {
+    @* Display doctor information in a Bootstrap card. *@
     <div class="card mb-4">
 
+        @* Place doctor information inside the card body. *@
         <div class="card-body">
 
+            @* Display the doctor information heading. *@
             <h4>Doctor Information</h4>
 
+            @* Display the doctor's name. *@
             <p>
                 <strong>Doctor:</strong>
                 @doctor.DoctorName
             </p>
 
+            @* Display the doctor's specialization. *@
             <p>
                 <strong>Specialization:</strong>
                 @doctor.Specialization
             </p>
 
+            @* Display the doctor's consultation fee. *@
             <p>
                 <strong>Consultation Fee:</strong>
                 ₹@doctor.ConsultationFee
@@ -37,67 +48,82 @@
     </div>
 }
 
+@* Create the appointment form and submit it using POST. *@
 <form asp-controller="Doctor"
       asp-action="Appointment"
       method="post">
 
+    @* Generate an anti-forgery token for form security. *@
     @Html.AntiForgeryToken()
 
-    <!-- Hidden Field -->
+    @* Submit DoctorId as a hidden field without showing it to the patient. *@
     <input type="hidden"
            asp-for="DoctorId" />
 
+    @* Create the patient name input section. *@
     <div class="mb-3">
 
+        @* Display the PatientName label. *@
         <label asp-for="PatientName"
                class="form-label">
             Patient Name
         </label>
 
+        @* Create the input field for the patient name. *@
         <input asp-for="PatientName"
                class="form-control" />
 
+        @* Display validation errors for PatientName. *@
         <span asp-validation-for="PatientName"
               class="text-danger">
         </span>
 
     </div>
 
+    @* Create the appointment date input section. *@
     <div class="mb-3">
 
+        @* Display the AppointmentDate label. *@
         <label asp-for="AppointmentDate"
                class="form-label">
             Appointment Date
         </label>
 
+        @* Create a date input field. *@
         <input asp-for="AppointmentDate"
                type="date"
                class="form-control" />
 
+        @* Display validation errors for AppointmentDate. *@
         <span asp-validation-for="AppointmentDate"
               class="text-danger">
         </span>
 
     </div>
 
+    @* Create the reason input section. *@
     <div class="mb-3">
 
+        @* Display the Reason label. *@
         <label asp-for="Reason"
                class="form-label">
             Reason
         </label>
 
+        @* Create a textarea for the appointment reason. *@
         <textarea asp-for="Reason"
                   class="form-control">
         </textarea>
 
     </div>
 
+    @* Create the appointment submit button. *@
     <button type="submit"
             class="btn btn-primary">
         Submit Appointment
     </button>
 
+    @* Create a cancel button that returns to the doctor list. *@
     <a asp-controller="Doctor"
        asp-action="Index"
        class="btn btn-secondary">
@@ -106,8 +132,10 @@
 
 </form>
 
+@* Define the optional Scripts section for client-side validation. *@
 @section Scripts
 {
+    @* Load the standard ASP.NET Core validation scripts. *@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }

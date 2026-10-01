@@ -1,41 +1,65 @@
-﻿<!DOCTYPE html>
+﻿@* Define this document as an HTML5 document. *@
+<!DOCTYPE html>
+
+@* Start the HTML document and specify English as the language. *@
 <html lang="en">
+
 <head>
+
+    @* Define the character encoding as UTF-8. *@
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>@ViewData["Title"] - Hospital Appointment System</title>
+    @* Make the website responsive on different screen sizes. *@
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
 
+    @* Display the current page title in the browser tab. *@
+    <title>
+        @ViewData["Title"] - Hospital Appointment System
+    </title>
+
+    @* Load Bootstrap CSS from the application's library. *@
     <link rel="stylesheet"
           href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 
+    @* Load the application's custom CSS file. *@
     <link rel="stylesheet"
           href="~/css/site.css"
           asp-append-version="true" />
+
 </head>
 
 <body>
 
+    @* Start the website header. *@
     <header>
 
-        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        @* Create a Bootstrap navigation bar. *@
+        <nav class="navbar navbar-expand-sm
+                    navbar-light bg-white
+                    border-bottom box-shadow mb-3">
 
+            @* Create a container for navigation elements. *@
             <div class="container-fluid">
 
+                @* Create a link to the doctor list. *@
                 <a class="navbar-brand"
                    asp-controller="Doctor"
                    asp-action="Index">
                     Hospital Appointment System
                 </a>
 
+                @* Create navigation buttons. *@
                 <div>
 
+                    @* Create a button for the doctor list. *@
                     <a class="btn btn-outline-primary me-2"
                        asp-controller="Doctor"
                        asp-action="Index">
                         Doctors
                     </a>
 
+                    @* Create a button for the API posts page. *@
                     <a class="btn btn-outline-secondary"
                        asp-controller="Home"
                        asp-action="Posts">
@@ -50,33 +74,49 @@
 
     </header>
 
+    @* Create the main content container. *@
     <div class="container">
 
-        <!-- IMPORTANT: Page content is rendered here -->
+        @* Define the main content section of the page. *@
         <main role="main" class="pb-3">
 
+            @* Render the content of the current Razor view here. *@
             @RenderBody()
 
         </main>
 
     </div>
 
+    @* Create the footer section. *@
     <footer class="border-top footer text-muted">
 
+        @* Create a Bootstrap container for footer content. *@
         <div class="container">
+
+            @* Display copyright information. *@
             &copy; 2026 - Hospital Appointment System
+
         </div>
 
     </footer>
 
+    @* Load jQuery JavaScript library. *@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
 
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @* Load Bootstrap JavaScript functionality. *@
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js">
+    </script>
 
+    @* Load the application's custom JavaScript file. *@
     <script src="~/js/site.js"
-            asp-append-version="true"></script>
+            asp-append-version="true">
+    </script>
 
-    @await RenderSectionAsync("Scripts", required: false)
+    @* Render the optional Scripts section from individual views. *@
+    @await RenderSectionAsync(
+        "Scripts",
+        required: false)
 
 </body>
+
 </html>

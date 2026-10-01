@@ -1,24 +1,32 @@
+@* Set the title of the appointment success page. *@
 @{
     ViewData["Title"] = "Appointment Submitted";
 }
 
+@* Display a Bootstrap success message. *@
 <div class="alert alert-success">
 
+    @* Display the success heading. *@
     <h2>Appointment Request Submitted</h2>
 
+    @* Display the patient name retrieved from the cookie. *@
     <p>
-        Thank you, <strong>@ViewBag.PatientName</strong>.
+        Thank you,
+        <strong>@ViewBag.PatientName</strong>.
     </p>
 
+    @* Display the appointment confirmation message. *@
     <p>
         Your appointment request has been received.
     </p>
 
+    @* Display the selected doctor's ID. *@
     <p>
         <strong>Doctor ID:</strong>
         @ViewBag.DoctorId
     </p>
 
+    @* Display the specialization retrieved from session. *@
     <p>
         <strong>Specialization:</strong>
         @ViewBag.Specialization
@@ -26,6 +34,7 @@
 
 </div>
 
+@* Create a button to return to the doctor list. *@
 <a asp-controller="Doctor"
    asp-action="Index"
    class="btn btn-primary">
